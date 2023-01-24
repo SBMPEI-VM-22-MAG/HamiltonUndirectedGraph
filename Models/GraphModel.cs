@@ -15,7 +15,7 @@ public class GraphModel
     {
         if (vertexCount >= 2)
         {
-            vertexCount = vertexCount;
+            VertexCount = vertexCount;
             Edges = new List<int[]>();
         }
     }

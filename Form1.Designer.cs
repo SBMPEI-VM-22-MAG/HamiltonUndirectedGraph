@@ -38,6 +38,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.MutateChance = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.GenerationsCount = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.PopulationSize = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -48,10 +53,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.label5 = new System.Windows.Forms.Label();
-            this.GenerationsCount = new System.Windows.Forms.NumericUpDown();
-            this.MutateChance = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,16 +66,21 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MutateChance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GenerationsCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopulationSize)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GenerationsCount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MutateChance)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.DefaultExt = "json";
+            this.saveFileDialog1.Filter = "JSON | *.json";
             // 
             // splitContainer1
             // 
@@ -120,6 +126,7 @@
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.Size = new System.Drawing.Size(757, 677);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // splitContainerCtrls
             // 
@@ -179,6 +186,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.button2);
             this.groupBox5.Controls.Add(this.MutateChance);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Controls.Add(this.GenerationsCount);
@@ -192,6 +200,69 @@
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Настройки";
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.button2.Location = new System.Drawing.Point(324, 29);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(123, 29);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "START";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // MutateChance
+            // 
+            this.MutateChance.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.MutateChance.Location = new System.Drawing.Point(197, 122);
+            this.MutateChance.Name = "MutateChance";
+            this.MutateChance.Size = new System.Drawing.Size(104, 27);
+            this.MutateChance.TabIndex = 5;
+            this.MutateChance.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(189, 20);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Вероятность мутации (%):";
+            // 
+            // GenerationsCount
+            // 
+            this.GenerationsCount.Location = new System.Drawing.Point(197, 79);
+            this.GenerationsCount.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.GenerationsCount.Name = "GenerationsCount";
+            this.GenerationsCount.Size = new System.Drawing.Size(104, 27);
+            this.GenerationsCount.TabIndex = 3;
+            this.GenerationsCount.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(101, 83);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(91, 20);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Поколений:";
             // 
             // PopulationSize
             // 
@@ -254,6 +325,7 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Открыть";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -263,6 +335,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "Сохранить";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
@@ -272,6 +345,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Быстрая очистка";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -307,58 +381,7 @@
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(388, 56);
             this.trackBar1.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(101, 83);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 20);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Поколений:";
-            // 
-            // GenerationsCount
-            // 
-            this.GenerationsCount.Location = new System.Drawing.Point(197, 79);
-            this.GenerationsCount.Maximum = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.GenerationsCount.Name = "GenerationsCount";
-            this.GenerationsCount.Size = new System.Drawing.Size(104, 27);
-            this.GenerationsCount.TabIndex = 3;
-            this.GenerationsCount.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // MutateChance
-            // 
-            this.MutateChance.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.MutateChance.Location = new System.Drawing.Point(197, 122);
-            this.MutateChance.Name = "MutateChance";
-            this.MutateChance.Size = new System.Drawing.Size(104, 27);
-            this.MutateChance.TabIndex = 5;
-            this.MutateChance.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 126);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(189, 20);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Вероятность мутации (%):";
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // Form1
             // 
@@ -387,12 +410,12 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MutateChance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GenerationsCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PopulationSize)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GenerationsCount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MutateChance)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -423,5 +446,6 @@
         private Label label6;
         private NumericUpDown GenerationsCount;
         private Label label5;
+        private Button button2;
     }
 }

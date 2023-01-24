@@ -23,12 +23,15 @@ public class CreatureModel
         _liveArea = lifeArea;
         GeneticCode = "";
 
+        StringBuilder genCode = new StringBuilder();
+
         //Генерируем случайную последовательность 0 и 1, заданной длины
         for(int i = 0; i < _liveArea.Edges.Count; i++)
         {
-            if (_rand.Next(2) == 0) GeneticCode += '0';
-            else GeneticCode += '1';
+            if (_rand.Next(2) == 0) genCode.Append('0');
+            else genCode.Append('1');
 
+            GeneticCode = genCode.ToString();
             _fitness = -1;
         }
     }
