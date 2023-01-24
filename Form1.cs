@@ -1,9 +1,15 @@
+using HamiltonUndirectedGraph.Services;
+using System.ComponentModel;
+
 namespace HamiltonUndirectedGraph
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private IMessageService _srvMsg;
+
+        public Form1(IMessageService srvMsg)
         {
+            _srvMsg = srvMsg;
             InitializeComponent();
         }
     }
