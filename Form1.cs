@@ -165,7 +165,7 @@ namespace HamiltonUndirectedGraph
             for (int i = 0; i < populationCount; i++)//Генерируем начальную популяцию.
             {
                 population.Add(new CreatureModel(field));
-                System.Threading.Thread.Sleep(1); //Из-за говнокода, постоянно создаются одинаковые экземпляры класса random и, как следствие, одинаковые особи, которые ничего не могут породить нормального. Надо делать задержку или использовать глобальный рандом
+                System.Threading.Thread.Sleep(1); //постоянно создаются одинаковые экземпляры класса random и, как следствие, одинаковые особи, которые ничего не могут породить нормального. Надо делать задержку или использовать глобальный рандом
             }
             for (int i = 0; i < gens; i++)
             {
@@ -195,8 +195,11 @@ namespace HamiltonUndirectedGraph
                 if (population[0].GetFitness() == 0)
                 {
                     textBox1.AppendText("Достигнут необходимый результат: " + population[0].GetFitness().ToString() + Environment.NewLine
-                        + population[0].DecodeGenome() + Environment.NewLine
-                        + "Рёбра не отсортированы. Но они образуют гамильтонов путь, если их отсотрировать.");
+                        + population[0].DecodeGenome()
+                        //+ Environment.NewLine
+                        //+ "Рёбра не отсортированы. Но они образуют гамильтонов путь, если их отсотрировать."
+                        )
+                        ;
                     break;
                 }
             }
