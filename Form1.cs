@@ -73,7 +73,7 @@ namespace HamiltonUndirectedGraph
                     }
 
                     //Сериализуем в строку
-                    string json = JsonConvert.SerializeObject(temp, Formatting.Indented);
+                    string json = JsonConvert.SerializeObject(temp);
                     StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);//Сохраняем в виде текстового документа
                     sw.WriteLine(json);//Сохраним
                     sw.Close();
