@@ -217,4 +217,68 @@ public class CreatureModel
         if (GeneticCode[point] == '1') GeneticCode = GeneticCode.Remove(point, 1).Insert(point, "0");
         else GeneticCode = GeneticCode.Remove(point, 1).Insert(point, "1");
     }
+
+    public string getHamiltonPath()
+    {
+        var directly = new List<KeyValuePair<int, int[]>>();
+
+        var burned = new List<int>();
+        var resList = new List<int[]>();
+
+        var startEdge = new int[2];
+        var removeIdxEdge = -1;
+
+        int singleVertex = -1;
+
+        for (int i = 0; i < GeneticCode.Length; i++)
+        {
+            if (GeneticCode[i] == '1')
+            {
+                var d = new KeyValuePair<int, int[]>(i, new int[] { _liveArea.Edges[i][0], _liveArea.Edges[i][1] });
+                directly.Add(d);
+            }
+        }
+
+        for (int vertex = 0; vertex < _liveArea.VertexCount; vertex++)
+        {
+            int counter = 0;
+            for (int i = 0; i < directly.Count; i++)
+            {
+                if (directly[i].Value[0] == vertex) counter++;
+                if (directly[i].Value[1] == vertex) counter++;
+            }
+
+            if(counter == 1)
+            {
+                singleVertex = vertex;
+                for(int j = 0; j < directly.Count; j++)
+                {
+                    if (directly[j].Value[0] == singleVertex || directly[j].Value[1] == singleVertex)
+                    {
+                        if (directly[j].Value[0] == singleVertex)
+                        {
+                            startEdge = directly[j].Value;
+                        }
+                        else
+                        {
+                            startEdge = new int[2]{ directly[j].Value[1], directly[j].Value[0]};
+                        }
+                        removeIdxEdge = j;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
+
+        directly.RemoveAt(removeIdxEdge);
+
+        //bool compute = true;
+        //while (compute)
+        //{
+            
+        //}
+
+        return $"StartVertex = {singleVertex + 1}";
+    }
 }

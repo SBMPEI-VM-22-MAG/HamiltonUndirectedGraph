@@ -196,8 +196,9 @@ namespace HamiltonUndirectedGraph
                 {
                     textBox1.AppendText("Достигнут необходимый результат: " + population[0].GetFitness().ToString() + Environment.NewLine
                         + population[0].DecodeGenome()
-                        //+ Environment.NewLine
-                        //+ "Рёбра не отсортированы. Но они образуют гамильтонов путь, если их отсотрировать."
+                        + Environment.NewLine
+                        + "Рёбра не отсортированы. Но они образуют гамильтонов путь, если их отсотрировать."
+                        + Environment.NewLine + population[0].getHamiltonPath()
                         )
                         ;
                     break;
